@@ -1,0 +1,34 @@
+{
+  "name": "fnrate",
+  "version": "0.0.1",
+  "description": "A bit of code to rate-limit the number of iterations for a function.",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha -R spec"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ben-bradley/fnrate"
+  },
+  "keywords": [
+    "function",
+    "rate",
+    "limit",
+    "rate",
+    "limit"
+  ],
+  "author": "Ben Bradley",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/ben-bradley/fnrate/issues"
+  },
+  "homepage": "https://github.com/ben-bradley/fnrate",
+  "devDependencies": {
+    "should": "^4.0.4",
+    "mocha": "^1.21.4"
+  },
+  "dependencies": {
+    "timey": "0.0.1",
+    "progress": "^1.1.8"
+  }
+}
