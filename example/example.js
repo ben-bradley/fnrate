@@ -1,17 +1,17 @@
 var fnrate = require('../');
-
-var count = 0;
+var counter = 0;
 
 fnrate({
-  rate: '100/min',
-  duration: '15 sec',
+  rate: '10/sec',
   times: 20,
+  duration: '10 sec',
+  progress: true,
   callback: function (next) {
-    console.log(++count);
+    counter += 1;
     next();
   },
   done: function (errors, results) {
-    console.log('ALL DONE!');
-    console.log(arguments);
+    (counter).should.equal(20);
+    done();
   }
 });
