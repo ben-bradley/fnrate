@@ -1,4 +1,4 @@
-# FnRate
+# FnRate [![Build Status](https://secure.travis-ci.org/ben-bradley/fnrate.png)](http://travis-ci.org/ben-bradley/fnrate)
 
 A bit of code that will limit the iteration of a function to a specific rate.
 
