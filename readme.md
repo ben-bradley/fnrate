@@ -19,6 +19,7 @@ fnrate({
   rate: '10/sec',
   duration: '5 min', // will run for 5 minutes & stop
   times: 100, // `callback` will iterate 100 times
+  max: 5, // [optional] there will only be 5 pending `callback`s at any time
   // `callback` will iterate for whichever is less: times or duration
   callback: function(next) {
     // do stuff
@@ -42,6 +43,7 @@ fnrate({
   - `'hour'`
 - `duration` - The length of time that you want the itaration to last. Expects a string: `n period` where `n` is the number of `period`s.
 - `times` - The number of times that you want the `callback` to run.
+- `max` - The maximum number of pending `callback`s at any time.
 - `callback` - The function to iterate. Provides a `next` function that must be called when complete to trigger the next iteration. If the `next` function is called with arguments, it will pass them through to the `done`;
 - `done` - The function to call when the `duration` or `times` are complete.
 

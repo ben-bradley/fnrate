@@ -97,4 +97,19 @@ describe('FnRate', function () {
     });
   });
 
+  it('should pause when the max pending is reached', function (done) {
+    this.timeout(3500);
+    fnrate({
+      rate: '50/sec',
+      times: 100,
+      max: 5,
+      callback: function (next) {
+        setTimeout(next, 250);
+      },
+      done: function (err, results) {
+        done();
+      }
+    });
+  });
+
 });
