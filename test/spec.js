@@ -112,4 +112,20 @@ describe('FnRate', function () {
     });
   });
 
+  it('should pause and resume from within the callback', function (done) {
+    this.timeout(3000);
+    fnrate({
+      rate: '2/sec',
+      times: 10,
+      callback: function (next) {
+        setTimeout(this.resume, 1000);
+        this.pause();
+        next();
+      },
+      done: function (err, results) {
+        done();
+      }
+    });
+  });
+
 });

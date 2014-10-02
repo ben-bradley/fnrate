@@ -47,6 +47,20 @@ fnrate({
 - `callback` - The function to iterate. Provides a `next` function that must be called when complete to trigger the next iteration. If the `next` function is called with arguments, it will pass them through to the `done`;
 - `done` - The function to call when the `duration` or `times` are complete.
 
+## Flow control
+
+I found that I wanted to be able to pause and resume the callbacks from within the callback so as of version 0.0.3, you can:
+
+- `options.max` - _Integer_ - Setting this option will cause fnrate to pause if there are ever more than this number of pending callbacks.
+- `pause()` - Calling `this.pause()` within the `callback` will also pause the execution of other callbacks until `this.resume()` is called.
+- `resume()` - Clears the `pause()` state and resumes execution of the `callback`.
+
 ## Test
 
 `npm test`
+
+## Versions
+
+- 0.0.3 - More finely-tuned version of flow-control
+- 0.0.2 - First atempt at flow-control
+- 0.0.1 - Initial drop & npm publish
