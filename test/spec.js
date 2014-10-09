@@ -98,7 +98,7 @@ describe('FnRate', function () {
   });
 
   it('should pause when the max pending is reached', function (done) {
-    this.timeout(3500);
+    this.timeout(5000);
     fnrate({
       rate: '50/sec',
       times: 100,
