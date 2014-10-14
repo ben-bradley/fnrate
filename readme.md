@@ -61,6 +61,7 @@ I found that I wanted to be able to pause and resume the callbacks from within t
 
 ## Versions
 
+- 0.0.4 - Added code to catch race conditions
 - 0.0.3 - More finely-tuned version of flow-control
 - 0.0.2 - First atempt at flow-control
 - 0.0.1 - Initial drop & npm publish
