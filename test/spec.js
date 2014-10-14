@@ -98,7 +98,7 @@ describe('FnRate', function () {
   });
 
   it('should pause when the max pending is reached', function (done) {
-    this.timeout(3500);
+    this.timeout(3600);
     fnrate({
       rate: '50/sec',
       times: 100,
@@ -121,6 +121,21 @@ describe('FnRate', function () {
         setTimeout(this.resume, 1000);
         this.pause();
         next();
+      },
+      done: function (err, results) {
+        done();
+      }
+    });
+  });
+
+  it('long test with pauses', function (done) {
+    this.timeout(35000);
+    fnrate({
+      rate: '50/sec',
+      times: 1000,
+      max: 5,
+      callback: function (next) {
+        setTimeout(next, 250);
       },
       done: function (err, results) {
         done();
