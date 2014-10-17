@@ -113,7 +113,7 @@ describe('FnRate', function () {
   });
 
   it('should pause and resume from within the callback', function (done) {
-    this.timeout(3000);
+    this.timeout(3500);
     fnrate({
       rate: '2/sec',
       times: 10,
@@ -138,6 +138,33 @@ describe('FnRate', function () {
         setTimeout(next, 250);
       },
       done: function (err, results) {
+        done();
+      }
+    });
+  });
+
+  it('should be able to change rates', function (done) {
+    this.timeout(11000);
+    var i = 0;
+    fnrate({
+      rate: function () {
+        if (i < 25)
+          return '10/sec';
+        else if (i < 50)
+          return '20/sec';
+        else if (i < 75)
+          return '5/sec';
+        else
+          return '15/sec';
+      },
+      times: 100,
+      max: 10,
+      callback: function (next) {
+        i += 1;
+        next(null, i);
+      },
+      done: function (err, results) {
+
         done();
       }
     });
