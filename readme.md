@@ -4,13 +4,19 @@ A bit of code that will limit the iteration of a function to a specific rate.
 
 ## Install
 
-`npm intall fnrate`
+```
+npm intall fnrate
+```
 
 -or-
 
-`npm install ben-bradley/fnrate`
+```
+npm install ben-bradley/fnrate
+```
 
-## Example
+## Examples
+
+### Basic example:
 
 ```javascript
 var fnrate = require('fnrate');
@@ -28,6 +34,33 @@ fnrate({
   done: function(err, results) {
     if (err) console.log(err);
     else console.log('all done!');
+  }
+});
+```
+
+### Variable rate example
+
+```javascript
+var fnrate = require('fnrate');
+var i = 0;
+
+fnrate({
+  rate: function () {
+    if (i < 25) return '10/sec';
+    else if (i < 50) return '20/sec';
+    else if (i < 75) return '5/sec';
+    else return '15/sec';
+  },
+  times: 100,
+  max: 10,
+  callback: function (next) {
+    i += 1;
+    console.log(i);
+    next(null, i);
+  },
+  done: function (err, results) {
+    console.log('all done!');
+    done();
   }
 });
 ```
@@ -57,10 +90,19 @@ I found that I wanted to be able to pause and resume the callbacks from within t
 
 ## Test
 
-`npm test`
+```
+npm test
+```
+
+-or-
+
+```
+mocha -R spec
+```
 
 ## Versions
 
+- 0.0.5 - Made .rate able to accept a function to modify rates on the fly!
 - 0.0.4 - Added code to catch race conditions
 - 0.0.3 - More finely-tuned version of flow-control
 - 0.0.2 - First atempt at flow-control

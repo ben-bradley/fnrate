@@ -1,6 +1,6 @@
 {
   "name": "fnrate",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "A bit of code to rate-limit the number of iterations for a function.",
   "main": "index.js",
   "scripts": {
